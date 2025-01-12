@@ -40,10 +40,8 @@ where a.PropertyAddress is null
 
 select PropertyAddress
 from [Portfolio Project].dbo.[Nashville Housing]
---where PropertyAddress is null
---order by ParcelID
 
-4. --Removing the comma from the address
+--Removing the comma from the address
 
 select
 SUBSTRING(PropertyAddress,1,charindex(',', PropertyAddress)-1) as Address,
@@ -68,7 +66,7 @@ select *
 from [Portfolio Project].dbo.[Nashville Housing] 
 
 
-5. -- Splitting owner address using parsename
+4. -- Splitting owner address using parsename
 
 select OwnerAddress
 from [Portfolio Project].dbo.[Nashville Housing]
@@ -101,7 +99,7 @@ select *
 from [Portfolio Project].dbo.[Nashville Housing] 
 
 
-6. --	Changing Y and N to YES and NO in the 'Sold as vacant' field
+5. --	Changing Y and N to YES and NO in the 'Sold as vacant' field
 
 select distinct(SoldAsVacant), count (SoldAsVacant) as Soldunits
 from [Portfolio Project].dbo.[Nashville Housing] 
@@ -122,7 +120,7 @@ else SoldAsVacant
 end
  
 
- 7. --Removing duplicates from the table
+ 6. --Removing duplicates from the table
  with RownumCTE as (
  select *,
  ROW_NUMBER() over (
@@ -134,8 +132,7 @@ end
 		ORDER by 
 			UniqueID
 			) row_num
- from [Portfolio Project].dbo.[Nashville Housing] 
- --order by ParcelID
+ from [Portfolio Project].dbo.[Nashville Housing]
  )
  --select * 
  delete
@@ -143,8 +140,7 @@ end
  where row_num >1
 
 
-
- 8. --Deleting unused columns
+ 7. --Deleting unused columns
 
  select * 
 from [Portfolio Project].dbo.[Nashville Housing]
