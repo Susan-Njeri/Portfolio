@@ -4,17 +4,14 @@ select * from [Portfolio Project].dbo.[Nashville Housing]
 
 1. -- Standardize date format
 
-select SaleDateConverted, convert (Date, SaleDate)
-from [Portfolio Project].dbo.[Nashville Housing]
-
-update [Nashville Housing]
-set SaleDate = convert(Date, SaleDate)
-
 Alter table [Nashville Housing]
 add SaleDateConverted Date
 
 update [Nashville Housing]
 set SaleDateConverted = convert(Date, SaleDate)
+	
+select SaleDateConverted, convert (Date, SaleDate)
+from [Portfolio Project].dbo.[Nashville Housing]
 
 2. --Populate property address data
 
